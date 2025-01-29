@@ -1,0 +1,27 @@
+.cart-item {
+    display: flex;
+    grid-row: auto;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px;
+    margin: 10px;
+    height: 10vh;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-radius: 100px;
+}
+
+.cart-item-quantity input {
+    background-color: transparent;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}

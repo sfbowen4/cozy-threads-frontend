@@ -1,11 +1,22 @@
+import { Link } from "react-router-dom";
 import "./NavigationBar.css";
+import { IconShoppingBag } from "@tabler/icons-react";
 
-export default function NavigationBar() {
+export default function NavigationBar({ ...props }) {
     return (
         <div className="nav-bar">
-            <a href="#home">Home</a>
-            <a href="#shop">Shop</a>
-            <a href="#about">About</a>
+            <div className="logo-wrapper">
+            </div>
+            <div className="nav-links">
+                <Link to="/">Home</Link>
+                <Link to="/catalog">Catalog</Link>
+                <Link to="/our-mission">Our Mission</Link>
+            </div>
+            <div className="cart-wrapper">
+                <Link to="/checkout" className="cart-icon">
+                    <IconShoppingBag size={28} />
+                </Link>
+            </div>
         </div>
     );
 }
