@@ -1,3 +1,5 @@
+import './ProductPreviewComponent.css';
+
 export default function ProductPreviewComponent(props) {
     return (
         <div className="product-preview">

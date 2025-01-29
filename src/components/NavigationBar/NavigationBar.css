@@ -5,6 +5,7 @@
   margin: 2vh;
   grid-template-columns: repeat(5, 1fr);
   height: 5vh;
+  min-height: 5vh;
   width: 75vw;
   background-color: var(--accent-color);
   border-radius: 5vh;

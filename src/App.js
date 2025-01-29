@@ -15,7 +15,17 @@ function App() {
   const [cartItems, setCartItems] = useState([{ id: 1, quantity: 3 }]);
 
   function addToCart(item) {
-    setCartItems([...cartItems, item]);
+    const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCartItems(cartItems.map((cartItem) => {
+        if (cartItem.id === item.id) {
+          return { ...cartItem, quantity: cartItem.quantity + 1 };
+        }
+        return cartItem;
+      }));
+    } else {
+      setCartItems([...cartItems, { id: item.id, quantity: 1 }]);
+    }
   }
 
   function removeFromCart(item) {

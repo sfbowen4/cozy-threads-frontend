@@ -1,8 +1,17 @@
-export default function CatalogPage() {
+import productData from "../../data/productData";
+import ProductPreviewComponent from "../../components/ProductPreviewComponent/ProductPreviewComponent";
+import './CatalogPage.css';
+
+
+export default function CatalogPage(props) {
     return (
-        <div>
-            <h1>Catalog</h1>
-            <p>Discover the latest in cozy fashion</p>
+        <div className="catalog-page">
+            <h2>Catalog</h2>
+            <div className="product-list">
+                {productData.map((product) => (
+                    <ProductPreviewComponent key={product.id} product={product} addToCart={props.addToCart} />
+                ))}
+            </div>
         </div>
     );
 }
