@@ -1,15 +1,24 @@
 :root {
-  --background-color: #f5e6d7; /* Light tan background */
-  --primary-color: #8b5e3b; /* Warm brown */
-  --secondary-color: #a67c52; /* Soft caramel */
-  --accent-color: #d2b48c; /* Muted beige */
-  --text-color: #4a3b2b; /* Dark earthy brown */
-  --button-bg: #c19a6b; /* Warm sand */
-  --button-hover: #a67c52; /* Rich caramel */
-  --border-color: #e1c8a1; /* Light earthy beige */
+  --background-color: #f5e6d7;
+  /* Light tan background */
+  --primary-color: #8b5e3b;
+  /* Warm brown */
+  --secondary-color: #a67c52;
+  /* Soft caramel */
+  --accent-color: #d2b48c;
+  /* Muted beige */
+  --text-color: #4a3b2b;
+  /* Dark earthy brown */
+  --button-bg: #c19a6b;
+  /* Warm sand */
+  --button-hover: #a67c52;
+  /* Rich caramel */
+  --border-color: #e1c8a1;
+  /* Light earthy beige */
 }
 
-body, html {
+body,
+html {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Arial", sans-serif;
@@ -20,4 +29,33 @@ body, html {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  -webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+p {
+  font-size: 1.2rem;
+  max-width: 60vw;
+}
+
+button {
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  padding: 7.5px 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--button-hover);
 }

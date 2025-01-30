@@ -12,12 +12,21 @@
 }
 
 .cart-item-quantity input {
-    background-color: transparent;
-    border: none;
+    background-color: white !important;
+    border-radius: 2rem;
+    border-style: none;
+
     width: 2rem;
     height: 2rem;
     font-size: 1rem;
     padding-left: 1rem;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
 }
 
 .cart-item img {

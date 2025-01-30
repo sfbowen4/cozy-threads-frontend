@@ -1,10 +1,24 @@
+.ladning-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+}
+
 .shop-now-button {
     background-color: var(--button-bg);
     color: var(--text-color);
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     font-size: 1.2rem;
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.3s;
+}
+
+.shop-now-button:hover {
+    background-color: var(--button-hover);
 }

@@ -12,7 +12,7 @@ import CompletePageWrapper from './pages/CompletePage/CompletePage';
 import React, { useState, useEffect, use } from "react";
 
 function App() {
-  const [cartItems, setCartItems] = useState([{ id: 1, quantity: 3 }]);
+  const [cartItems, setCartItems] = useState([]);
 
   function addToCart(item) {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);

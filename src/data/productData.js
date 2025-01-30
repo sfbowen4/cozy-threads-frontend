@@ -61,7 +61,7 @@ const productData = [
         description: "A durable, ethically sourced tote bag made from recycled cotton. Perfect for carrying daily essentials with a minimalist design.",
         image: "assets/9.png",
         price: 1999,
-    }
+    },
 ];
 
 export default productData;

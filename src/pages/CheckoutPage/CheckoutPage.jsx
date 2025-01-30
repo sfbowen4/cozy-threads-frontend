@@ -34,7 +34,7 @@ export default function CheckoutPage(props) {
   useEffect(() => {
     let tempEnumItems = [];
     let runningTotal = 0;
-    props.cartItems !== null && props.cartItems.forEach((item) => {
+    props.cartItems !== null && props.cartItems.forEach((item) => { // {id: int, quantity: int}
       for (let i = 0; i < item.quantity; i++) {
         const product = productData.find((product) => product.id === item.id);
         tempEnumItems.push({ id: product.id, amount: product.price });
@@ -42,7 +42,6 @@ export default function CheckoutPage(props) {
       }
     });
     setEnumeratedCartItems(tempEnumItems);
-    console.log(runningTotal);
     setTotal(runningTotal);
   }, [props.cartItems]);
 
@@ -58,7 +57,7 @@ export default function CheckoutPage(props) {
         <div className="checkout-left">
           <h1>Checkout</h1>
           <h2>Order Summary</h2>
-          <ul>
+          <ul className="cart-items">
             {props.cartItems.map((item) => {
               const product = productData.find((product) => product.id === item.id);
               return <CartItemComponent key={product.id} quantity={item.quantity} product={product} removeFromCart={props.removeFromCart} updateCartItemQuantity={props.updateCartItemQuantity}></CartItemComponent>;
