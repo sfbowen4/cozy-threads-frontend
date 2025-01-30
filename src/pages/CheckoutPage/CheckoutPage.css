@@ -3,6 +3,55 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     min-height: 90vh;
+    max-height: 100px;
+}
+
+@media screen and (max-width: 768px) {
+    .checkout-page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-items {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .checkout-left {
+        height: auto;
+        width: 100vw;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .checkout-left h1 {
+        justify-self: start;
+        align-self: flex-start;
+    }
+    
+    .cart-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 60vh;
+        justify-content: center;
+        margin-top: 20px;
+        padding-top: 100px;
+        overflow-y: scroll;
+        /* scrollbar-gutter: stable; */
+        scroll-behavior: smooth;
+        scrollbar-color: #d2b48c transparent;
+    }
+
+    .checkout-left {
+        min-width: 50vw;
+        height: 100%;
+        grid-column: 1;
+        justify-content: center;
+        text-align: start;
+    }
 }
 
 .empty-checkout {
@@ -10,22 +59,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.checkout-left {
-    grid-column: 1;
-    justify-content: center;
-    text-align: start;
-}
-
-.cart-items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-height: 60vh;
-    justify-content: center;
-    margin-top: 20px;
-    overflow-y: scroll;
+    margin: 20px;
 }
 
 .checkout-right {
@@ -40,7 +74,7 @@
 
     form {
         width: 30vw;
-        background-color: white ;
+        background-color: white;
         min-width: 500px;
         align-self: center;
         border-radius: 7px;

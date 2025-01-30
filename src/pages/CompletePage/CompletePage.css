@@ -59,13 +59,13 @@ table {
 }
 
 table tbody tr:first-child td {
-    border-top: 1px solid #E6E6E6;
+    border-top: 1px solid var(--text-color);
     /* Top border */
     padding-top: 10px;
 }
 
 table tbody tr:last-child td {
-    border-bottom: 1px solid #E6E6E6;
+    border-bottom: 1px solid var(--text-color);
     /* Bottom border */
 }
 
@@ -75,7 +75,7 @@ td {
 
 .TableContent {
     text-align: right;
-    color: #6D6E78;
+    color: var(--text-color);
 }
 
 .TableLabel {
@@ -84,13 +84,13 @@ td {
 }
 
 #view-details {
-    color: #0055DE;
+    color: var(--text-color);
 }
 
 #retry-button {
     text-align: center;
-    background: #0055DE;
-    color: #ffffff;
+    background: var(--button-bg);
+    color: var(--text-color);
     border-radius: 4px;
     border: 0;
     padding: 12px 16px;

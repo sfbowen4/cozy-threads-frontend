@@ -57,17 +57,18 @@ export default function CheckoutPage(props) {
         <div className="checkout-left">
           <h1>Checkout</h1>
           <h2>Order Summary</h2>
-          <ul className="cart-items">
+          <div className="cart-items">
             {props.cartItems.map((item) => {
               const product = productData.find((product) => product.id === item.id);
               return <CartItemComponent key={product.id} quantity={item.quantity} product={product} removeFromCart={props.removeFromCart} updateCartItemQuantity={props.updateCartItemQuantity}></CartItemComponent>;
             })}
-          </ul>
-          <h2>Total: ${total / 100}</h2>
+          </div>
+          
         </div>
         <div className="checkout-right">
           {clientSecret ? (
             <Elements options={{ clientSecret, appearance, loader }} stripe={stripePromise}>
+              <h2>Total: ${total / 100}</h2>
               <CheckoutForm clearCart={props.clearCart}/>
             </Elements >
           ) : (<span></span>)}
@@ -76,7 +77,8 @@ export default function CheckoutPage(props) {
     ) : (
       <div className="empty-checkout">
         <h1>Nothing to see here.</h1>
-        <h2>Put some items in your shoping bag to see checkout!</h2>
+        <h2>Put some items in your shoping bag to experience checkout!</h2>
+
       </div>
     )
   );

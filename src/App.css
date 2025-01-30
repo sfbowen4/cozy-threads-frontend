@@ -6,7 +6,10 @@
   height: 100vh;
 }
 
-.content {
+@media screen and (max-width: 768px) {
+  .content {
+    margin-top: 84px;
+  }
 }
 
 /* .App-logo {

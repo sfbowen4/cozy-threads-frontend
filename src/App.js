@@ -14,6 +14,13 @@ import React, { useState, useEffect, use } from "react";
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
+  useEffect(() => {
+    const storedCart = JSON.parse(sessionStorage.getItem("cart"));
+    if (storedCart) {
+      setCartItems(storedCart);
+    }
+  }, []);
+
   function addToCart(item) {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
@@ -26,10 +33,12 @@ function App() {
     } else {
       setCartItems([...cartItems, { id: item.id, quantity: 1 }]);
     }
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   }
 
   function removeFromCart(item) {
     setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   }
 
   function updateCartItemQuantity(item, quantity) {
@@ -39,24 +48,28 @@ function App() {
       }
       return cartItem;
     }));
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   }
 
   function clearCart() {
     setCartItems([]);
+    sessionStorage.setItem("cart", JSON.stringify(cartItems));
   }
 
   return (
     <div className="App">
       <BrowserRouter>
         <NavigationBar cartItems={cartItems} />
-        <Routes className="content">
-          <Route path="*" element={<LandingPage />} />
-          <Route index element={<LandingPage />} />
-          <Route path="/catalog" element={<CatalogPage addToCart={addToCart} />} />
-          <Route lazy={true} path="/checkout" element={<CheckoutPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} updateCartItemQuantity={updateCartItemQuantity} />} />
-          <Route path="/complete" element={ <CompletePageWrapper /> } />
-          <Route path="/our-mission" element={<MissionPage />} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="*" element={<LandingPage />} />
+            <Route index element={<LandingPage />} />
+            <Route path="/catalog" element={<CatalogPage addToCart={addToCart} />} />
+            <Route lazy={true} path="/checkout" element={<CheckoutPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} updateCartItemQuantity={updateCartItemQuantity} />} />
+            <Route path="/complete" element={<CompletePageWrapper />} />
+            <Route path="/our-mission" element={<MissionPage />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );
