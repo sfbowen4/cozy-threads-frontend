@@ -11,6 +11,7 @@ import CartPage from './pages/CartPage/CartPage';
 import CompletePageWrapper from './pages/CompletePage/CompletePage';
 
 import React, { useState, useEffect, use } from "react";
+import ProductPage from './pages/ProductPage/ProductPage';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -66,6 +67,7 @@ function App() {
             <Route path="*" element={<LandingPage />} />
             <Route index element={<LandingPage />} />
             <Route path="/catalog" element={<CatalogPage addToCart={addToCart} />} />
+            <Route path="/product/:id" element={<ProductPage addToCart={addToCart} />} />
             <Route lazy={true} path="/checkout" element={<CheckoutPage cartItems={cartItems} />} />
             <Route path="/cart" element={<CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} updateCartItemQuantity={updateCartItemQuantity} />} />
             <Route path="/complete" element={<CompletePageWrapper />} />

@@ -18,7 +18,7 @@ export default function CartPage(props) {
 
     return (
         <div className="cart-page">
-            <h1>Cart</h1>
+            <h1>My Bag</h1>
             {props.cartItems.length > 0 ? (
                 <div>
                     <div className="cart-items">

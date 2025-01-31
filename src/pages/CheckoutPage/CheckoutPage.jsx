@@ -15,7 +15,6 @@ export default function CheckoutPage(props) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
     if (enumeratedCartItems.length === 0) {
       return;
     }
@@ -48,10 +47,33 @@ export default function CheckoutPage(props) {
   const appearance = {
     theme: 'flat',
     variables: {
-      colorPrimary: 'var(--primary-color)',
-      colorBackground: 'var(--background-color)',
-      colorText: 'var(--text-color)'
-    }
+      colorPrimary: '#8b5e3b',
+      colorText: '#4a3b2b'
+    },
+    // rules: {
+    //   '.Checkbox': {
+    //     backgroundColor: 'var(--background-color)',
+    //     color: '#4a3b2b',
+    //     borderColor: 'var(--primary-color)',
+    //   },
+    //   '.Tab': {
+    //     border: '1px solid #e1c8a1',
+    //     backgroundColor: '#a67c52',
+    //     color: '#4a3b2b',
+    //     boxShadow: '0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(18, 42, 66, 0.02)',
+    //   },
+
+    //   '.Tab:hover': {
+    //     color: 'var(--colorText)',
+    //   },
+
+    //   '.Tab--selected': {
+    //     borderColor: '#e1c8a1',
+    //     backgroundColor: 'var(--accent-color)',
+    //   },
+
+    //   // See all supported class names and selector syntax below
+    // }
   };
   // Enable the skeleton loader UI for optimal loading.
   const loader = 'auto';
