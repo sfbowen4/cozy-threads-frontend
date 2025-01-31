@@ -47,39 +47,45 @@ export default function CheckoutPage(props) {
 
   const appearance = {
     theme: 'flat',
+    variables: {
+      colorPrimary: 'var(--primary-color)',
+      colorBackground: 'var(--background-color)',
+      colorText: 'var(--text-color)'
+    }
   };
   // Enable the skeleton loader UI for optimal loading.
   const loader = 'auto';
 
   return (
-    props.cartItems.length > 0 ? (
-      <div className="checkout-page">
-        <div className="checkout-left">
-          <h1>Checkout</h1>
-          <h2>Order Summary</h2>
-          <div className="cart-items">
-            {props.cartItems.map((item) => {
-              const product = productData.find((product) => product.id === item.id);
-              return <CartItemComponent key={product.id} quantity={item.quantity} product={product} removeFromCart={props.removeFromCart} updateCartItemQuantity={props.updateCartItemQuantity}></CartItemComponent>;
-            })}
-          </div>
-          
-        </div>
-        <div className="checkout-right">
-          {clientSecret ? (
-            <Elements options={{ clientSecret, appearance, loader }} stripe={stripePromise}>
-              <h2>Total: ${total / 100}</h2>
-              <CheckoutForm clearCart={props.clearCart}/>
-            </Elements >
-          ) : (<span></span>)}
-        </div>
-      </div>
-    ) : (
-      <div className="empty-checkout">
-        <h1>Nothing to see here.</h1>
-        <h2>Put some items in your shoping bag to experience checkout!</h2>
+    <div>
+      <h1>Checkout</h1>
+      {props.cartItems.length > 0 ? (
+        <div className="checkout-page">
+          <div className="checkout-left">
+            <h2>Order Summary</h2>
+            <div className="cart-items">
+              {props.cartItems.map((item) => {
+                const product = productData.find((product) => product.id === item.id);
+                return <CartItemComponent key={product.id} quantity={item.quantity} product={product} removeFromCart={props.removeFromCart} updateCartItemQuantity={props.updateCartItemQuantity}></CartItemComponent>;
+              })}
+            </div>
 
-      </div>
-    )
+          </div>
+          <div className="checkout-right">
+            {clientSecret ? (
+              <Elements options={{ clientSecret, appearance, loader }} stripe={stripePromise}>
+                <CheckoutForm total={total} />
+              </Elements >
+            ) : (<span></span>)}
+          </div>
+        </div>
+      ) : (
+        <div className="empty-checkout">
+          <h1>Nothing to see here.</h1>
+          <h2>Put some items in your shoping bag to experience checkout!</h2>
+
+        </div>
+      )}
+    </div>
   );
 }

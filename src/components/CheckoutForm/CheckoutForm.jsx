@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import {
   PaymentElement,
   useStripe,
-  useElements
+  useElements,
+  AddressElement
 } from "@stripe/react-stripe-js";
+import "./CheckoutForm.css";
 
-export default function CheckoutForm() {
+export default function CheckoutForm(props) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -48,12 +50,19 @@ export default function CheckoutForm() {
   };
 
   const paymentElementOptions = {
-    layout: "tabs"
+    layout: 'tabs'
+  }
+
+  const addressElementOptions = {
+    mode: 'shipping'
   }
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-
+      <div className="total">
+        <h2 >Total: ${(props.total / 100).toFixed(2)}</h2>
+      </div>
+      <AddressElement id="address-element" options={addressElementOptions}/>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">

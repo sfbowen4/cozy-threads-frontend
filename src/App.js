@@ -7,6 +7,7 @@ import CatalogPage from './pages/CatalogPage/CatalogPage';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
+import CartPage from './pages/CartPage/CartPage';
 import CompletePageWrapper from './pages/CompletePage/CompletePage';
 
 import React, { useState, useEffect, use } from "react";
@@ -65,7 +66,8 @@ function App() {
             <Route path="*" element={<LandingPage />} />
             <Route index element={<LandingPage />} />
             <Route path="/catalog" element={<CatalogPage addToCart={addToCart} />} />
-            <Route lazy={true} path="/checkout" element={<CheckoutPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} updateCartItemQuantity={updateCartItemQuantity} />} />
+            <Route lazy={true} path="/checkout" element={<CheckoutPage cartItems={cartItems} />} />
+            <Route path="/cart" element={<CartPage cartItems={cartItems} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} updateCartItemQuantity={updateCartItemQuantity} />} />
             <Route path="/complete" element={<CompletePageWrapper />} />
             <Route path="/our-mission" element={<MissionPage />} />
           </Routes>

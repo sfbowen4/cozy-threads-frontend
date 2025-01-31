@@ -10,12 +10,11 @@ export default function NavigationBar({ ...props }) {
     useEffect(() => {
         let count = 0;
         props.cartItems !== null && props.cartItems.forEach((item) => { // {id: int, quantity: int}
-            for (let i = 0; i < item.quantity; i++) {
-                const product = productData.find((product) => product.id === item.id);
-                count += 1;
-            }
-            setCartItemCount(count);
+            console.log(item)
+            count += item.quantity;
         });
+        console.log(count);
+        setCartItemCount(count);
     }, [props.cartItems]);
 
     return (
@@ -29,12 +28,13 @@ export default function NavigationBar({ ...props }) {
                 <Link to="/our-mission">Our Mission</Link>
             </div>
             <div className="cart-wrapper">
-                <Link to="/checkout" className="cart-button">
+                <Link to="/cart" className="cart-button">
                     <div className="cart-label">
-                        My Bag ({cartItemCount})
+                        My Bag
                     </div>
                     <div className="cart-icon">
-                        <IconShoppingBag size={28} />
+                        {cartItemCount}
+                        <IconShoppingBag size={40} />
                     </div>
                 </Link>
             </div>

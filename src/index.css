@@ -50,7 +50,7 @@ button {
   background-color: var(--button-bg);
   color: var(--text-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 64px;
   padding: 7.5px 15px;
   font-size: 1.2rem;
   cursor: pointer;

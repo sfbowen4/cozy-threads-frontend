@@ -6,7 +6,9 @@ export default function CartItemComponent(props) {
     const [quantity, setQuantity] = useState(props.quantity);
 
     useEffect(() => {
-        props.updateCartItemQuantity(props.product, quantity);
+        if (props.isEditable) {
+            props.updateCartItemQuantity(props.product, Number(quantity));
+        }
     }, [quantity]);
 
     return (
@@ -18,10 +20,13 @@ export default function CartItemComponent(props) {
                 <h3>{props.product.name}</h3>
                 <p>${(props.product.price / 100).toFixed(2)}</p>
             </div>
-            <div className="cart-item-remove">
-                <input type="number" min={1} max={10} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-                <IconTrash onClick={() => props.removeFromCart(props.product)} size={24} color='var(--warn)' />
-            </div>
+            {props.isEditable ? (
+                <div className="cart-item-remove">
+                    <input type="number" min={1} value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+                    <IconTrash onClick={() => props.removeFromCart(props.product)} size={24} color='var(--warn)' />
+                </div>) : (<div className="static-quantity">
+                    <p>Quantity: {quantity}</p>
+                </div>)}
         </div>
     );
 }
